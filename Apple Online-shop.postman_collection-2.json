@@ -1,0 +1,448 @@
+{
+	"info": {
+		"_postman_id": "c626a74c-611b-4b70-84f8-2a7584fc7d9c",
+		"name": "Apple Online-shop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30828316",
+		"_collection_link": "https://bold-spaceship-407112.postman.co/workspace/course-work~4fc73f1c-031a-4b6d-b9cc-10cb97fe349a/collection/30828316-c626a74c-611b-4b70-84f8-2a7584fc7d9c?action=share&source=collection_link&creator=30828316"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_user",
+							"value": "7",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "lkjh@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "qwertyuiop123!",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "k-doluhanov.xn--80ahdri7a.site/api/register",
+					"host": [
+						"k-doluhanov",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"api",
+						"register"
+					],
+					"query": [
+						{
+							"key": "id_user",
+							"value": "7",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "adu@gmail.com",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "adu1234567!",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "lkjh@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "qwertyuiop123!",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "k-doluhanov.xn--80ahdri7a.site/api/login",
+					"host": [
+						"k-doluhanov",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "products",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "k-doluhanov.xn--80ahdri7a.site/api/products",
+					"host": [
+						"k-doluhanov",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "k-doluhanov.xn--80ahdri7a.site/api/product/2",
+					"host": [
+						"k-doluhanov",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"api",
+						"product",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add orders",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "BbYFVBb3_NjJzsH_zb9xS4leJeIVJ7qO",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "k-doluhanov.xn--80ahdri7a.site/api/orders/add/2",
+					"host": [
+						"k-doluhanov",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"api",
+						"orders",
+						"add",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete orders",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "HWY_UYavTofkJpejlGKkmJYzrv9yWMgO",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "k-doluhanov.xn--80ahdri7a.site/api/orders/delete/4",
+					"host": [
+						"k-doluhanov",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"api",
+						"orders",
+						"delete",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add product system",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "BbYFVBb3_NjJzsH_zb9xS4leJeIVJ7qO",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id_product",
+							"value": "4",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "iPhone 15",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "2134",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "2Aqx2wDc1/iPhone14PM.jpeg"
+						}
+					]
+				},
+				"url": {
+					"raw": "k-doluhanov.xn--80ahdri7a.site/api/product/add",
+					"host": [
+						"k-doluhanov",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"api",
+						"product",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete product system",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "BbYFVBb3_NjJzsH_zb9xS4leJeIVJ7qO",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "k-doluhanov.xn--80ahdri7a.site/api/product/delete/4",
+					"host": [
+						"k-doluhanov",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"api",
+						"product",
+						"delete",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "BbYFVBb3_NjJzsH_zb9xS4leJeIVJ7qO",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "MacBook Pro 16",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "k-doluhanov.xn--80ahdri7a.site/api/product/update/2",
+					"host": [
+						"k-doluhanov",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"api",
+						"product",
+						"update",
+						"2"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get a specific user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "BbYFVBb3_NjJzsH_zb9xS4leJeIVJ7qO",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "k-doluhanov.xn--80ahdri7a.site/api/user/2",
+					"host": [
+						"k-doluhanov",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"api",
+						"user",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "BbYFVBb3_NjJzsH_zb9xS4leJeIVJ7qO",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "k-doluhanov.xn--80ahdri7a.site/api/users",
+					"host": [
+						"k-doluhanov",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get orders ",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "BbYFVBb3_NjJzsH_zb9xS4leJeIVJ7qO",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "k-doluhanov.xn--80ahdri7a.site/api/user/orders/1",
+					"host": [
+						"k-doluhanov",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"api",
+						"user",
+						"orders",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
