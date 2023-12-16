@@ -79,7 +79,7 @@ class OrdersController extends Controller
                 $response->statusCode = 404;
                 $response->data = [
                     'error' => [
-                        'code' => 201,
+                        'code' => 200,
                         'message' => 'Продукт успешно удален из корзины!',
                     ],
                 ];

@@ -15,7 +15,7 @@ class ProductsController extends Controller
         $products = Products::find()->all();
         if ($products !== null) {
             $response = $this->response;
-            $response->statusCode = 201;
+            $response->statusCode = 200;
             $response->data = $products;
         } else {
             $response = $this->response;
@@ -118,10 +118,10 @@ class ProductsController extends Controller
             }
         } else {
             $response = $this->response;
-            $response->statusCode = 401;
+            $response->statusCode = 403;
             $response->data = [
                 'error' => [
-                    'code' => 401,
+                    'code' => 403,
                     'message' => 'Отсутствуют права администратора',
                 ],
             ];
@@ -137,10 +137,10 @@ class ProductsController extends Controller
             if ($product !== null) {
                 $product->delete();
                 $response = $this->response;
-                $response->statusCode = 201;
+                $response->statusCode = 200;
                 $response->data = [
                     'error' => [
-                        'code' => 201,
+                        'code' => 200,
                         'message' => 'Продукт успешно удален!',
                     ],
                 ];
@@ -158,10 +158,10 @@ class ProductsController extends Controller
             }
         } else {
             $response = $this->response;
-            $response->statusCode = 401;
+            $response->statusCode = 403;
             $response->data = [
                 'error' => [
-                    'code' => 401,
+                    'code' => 403,
                     'message' => 'Отсутствуют права администратора',
                 ],
             ];
@@ -182,7 +182,7 @@ class ProductsController extends Controller
                 $response->statusCode = 404;
                 $response->data = [
                     'error' => [
-                        'code' => 201,
+                        'code' => 200,
                         'message' => 'Продукт успешно изменен!',
                     ],
                 ];
@@ -200,10 +200,10 @@ class ProductsController extends Controller
             }
         } else {
             $response = $this->response;
-            $response->statusCode = 401;
+            $response->statusCode = 403;
             $response->data = [
                 'error' => [
-                    'code' => 401,
+                    'code' => 403,
                     'message' => 'Отсутствуют права администратора',
                 ],
             ];

@@ -19,7 +19,7 @@ class UserController extends Controller
 
         if ($registeredUser !== null) {
             $response = $this->response;
-            $response->statusCode = 204; // Успешная регистрация пользователя
+            $response->statusCode = 200; // Успешная регистрация пользователя
             return $response;
         } else {
             // Обработка специфических ошибок
@@ -59,7 +59,7 @@ class UserController extends Controller
 
         if ($loggedInUser !== null) {
             $response = $this->response;
-            $response->statusCode = 201;
+            $response->statusCode = 200;
             $response->data = [
                 'message' => 'Успешный вход в аккаунт',
                 'token' => $loggedInUser,
@@ -120,10 +120,10 @@ class UserController extends Controller
             }
         } else {
             $response = $this->response;
-            $response->statusCode = 401;
+            $response->statusCode = 403;
             $response->data = [
                 'error' => [
-                    'code' => 401,
+                    'code' => 403,
                     'message' => 'Отсутствуют права администратора или пользователь не авторизован',
                 ],
             ];
@@ -138,7 +138,7 @@ class UserController extends Controller
         if ($user !== null && $user->admin !== 0) {
             if ($find_user !== null) {
                 $response = $this->response;
-                $response->statusCode = 201;
+                $response->statusCode = 200;
                 $response->data = $find_user;
             } else {
                 $response = $this->response;
@@ -156,7 +156,7 @@ class UserController extends Controller
             $response->statusCode = 404;
             $response->data = [
                 'error' => [
-                    'code' => 401,
+                    'code' => 403,
                     'message' => 'Отсутствуют права администратора или пользователь не авторизован',
                 ],
             ];
@@ -164,41 +164,70 @@ class UserController extends Controller
         }
     }
 
-    public function actionOrders($id_user)//Просмотр корзины
-    {
-        $user = $this->findUserByToken(str_replace('Bearer ', '', Yii::$app->request->headers->get('Authorization')));
-        if ($user !== null) {
-            $orders = Orders::find()
-                ->where(['user_id' => $id_user])
-                ->all();
+    public function actionOrders()
+{
+    $token = str_replace('Bearer ', '', Yii::$app->request->headers->get('Authorization'));
+    $user = $this->findUserByToken($token);
 
-            if (!empty($orders)) {
-                $response = $this->response;
-                $response->statusCode = 200;
-                $response->data = $orders;
-            } else {
-                $response = $this->response;
-                $response->statusCode = 404;
-                $response->data = [
-                    'error' => [
-                        'code' => 404,
-                        'message' => 'Корзина пуста',
-                    ],
-                ];
-            }
-        } else {
-            $response = $this->response;
-            $response->statusCode = 404;
-            $response->data = [
-                'error' => [
-                    'code' => 404,
-                    'message' => 'Незарегистрированный пользователь',
-                ],
-            ];
-        }
+    if ($user !== null) {
+        $orders = $user->orders;
 
+        $response = $this->response;
+        $response->statusCode = 200;
+        $response->data = [
+            'orders' => $orders,
+        ];
+        return $response;
+    } else {
+        $response = $this->response;
+        $response->statusCode = 401;
+        $response->data = [
+            'error' => [
+                'code' => 401,
+                'message' => 'Вы не зарегистрированы',
+            ],
+        ];
         return $response;
     }
+}
+
+
+
+    // public function actionOrders($id_user)//Просмотр корзины
+    // {
+    //     $user = $this->findUserByToken(str_replace('Bearer ', '', Yii::$app->request->headers->get('Authorization')));
+    //     if ($user !== null) {
+    //         $orders = Orders::find()
+    //             ->where(['user_id' => $id_user])
+    //             ->all();
+
+    //         if (!empty($orders)) {
+    //             $response = $this->response;
+    //             $response->statusCode = 200;
+    //             $response->data = $orders;
+    //         } else {
+    //             $response = $this->response;
+    //             $response->statusCode = 404;
+    //             $response->data = [
+    //                 'error' => [
+    //                     'code' => 404,
+    //                     'message' => 'Корзина пуста',
+    //                 ],
+    //             ];
+    //         }
+    //     } else {
+    //         $response = $this->response;
+    //         $response->statusCode = 404;
+    //         $response->data = [
+    //             'error' => [
+    //                 'code' => 404,
+    //                 'message' => 'Незарегистрированный пользователь',
+    //             ],
+    //         ];
+    //     }
+
+    //     return $response;
+    // }
 
 
     private function findUserByToken($token)

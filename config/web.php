@@ -65,7 +65,8 @@ $config = [
                 'POST product/update/<id_product:\d+>' => 'products/update',        // Изменение данных о продукте (actionUpdate файл ProductsControllers 171)
                 'GET user/<id_user:\d+>' => 'user/user',                    // Получение данных пользователя (actionUser файл UserControllers 96)
                 'GET users' => 'user/users',                                // Получения данных всех пользователей (actionUsers файл UserControllers 134)
-                'GET user/orders/<id_user:\d+>' => 'user/orders',           // Просмотр корзины !!! (actionOrders файл UserControllers 167)
+                'GET user/orders' => 'user/orders',
+                // 'GET user/orders/<id_user:\d+>' => 'user/orders',           // Просмотр корзины !!! (actionOrders файл UserControllers 167)
             ],
         ],
     ],
